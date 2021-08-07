@@ -128,10 +128,9 @@ def numericise(
     >>>
     """
     if isinstance(value, str):
-        if "_" in value:
-            if not allow_underscores_in_numeric_literals:
-                return value
-            value = value.replace("_", "")
+        if "_" in value and not allow_underscores_in_numeric_literals:
+            return value
+        value = value.replace("_", "")
 
         # replace comma separating thousands to match python format
         cleaned_value = value.replace(",", "")
